@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FrostPOS - Product Not Found</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Product Not Found</h2>
+    </div>
+
+    <p>Barcode: {{ barcode }} does not match any product.</p>
+
+    <div class="actions">
+        <a href="{% url 'scan_barcode' %}">Try Again</a>
+        <a href="{% url 'products' %}">Back to Products</a>
+    </div>
+</div>
+</body>
+</html>

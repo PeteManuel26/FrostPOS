@@ -1,0 +1,105 @@
+body {
+    background: linear-gradient(to bottom, #000000, #ffffff);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #222; 
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    margin: 0;
+    color: #000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+table th {
+    background-color: #000;
+    color: #fff;
+}
+
+button {
+    padding: 8px 16px;
+    margin: 2px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.button-link {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 2px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+a.button-link:hover {
+    background-color: #444;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 6px;
+    width: 80%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.actions {
+    margin-top: 15px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+span.out-of-stock {
+    color: red;
+    font-weight: bold;
+}

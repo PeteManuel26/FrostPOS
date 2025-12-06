@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h2>Edit Product</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Name: <input type="text" name="name" value="{{ product.name }}" required></p>
+        <p>Price: <input type="number" name="price" step="0.01" value="{{ product.price }}" required></p>
+        <p>Stock: <input type="number" name="stock" value="{{ product.stock }}" required></p>
+        <p>Barcode: <input type="text" name="barcode" value="{{ product.barcode }}"></p>
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{% url 'products' %}">Back to POS</a>
+</div>
+</body>
+</html>

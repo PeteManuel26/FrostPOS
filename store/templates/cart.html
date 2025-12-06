@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FrostPOS - Cart</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Your Cart</h2>
+    </div>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Stock</th>
+            <th>Line Total</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.qty }}</td>
+            <td>
+                {{ item.product.stock }}
+                {% if item.qty > item.product.stock %}
+                    <span class="out-of-stock">(Not enough stock!)</span>
+                {% endif %}
+            </td>
+            <td>₱{{ item.line_total }}</td>
+            <td>
+                <form method="POST" action="{% url 'update_cart' item.product.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="decrease">-</button>
+                    <button type="submit" name="action" value="increase">+</button>
+                    <button type="submit" name="action" value="remove">Remove</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Total: ₱{{ total }}</h3>
+
+    <div class="actions">
+        <a href="{% url 'checkout' %}" class="button-link">Checkout</a>
+        <a href="{% url 'products' %}" class="button-link">Continue Shopping</a>
+    </div>
+</div>
+</body>
+</html>

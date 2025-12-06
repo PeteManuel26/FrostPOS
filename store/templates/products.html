@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FrostPOS - Products</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Frozen Products</h2>
+    </div>
+
+    <div class="actions">
+        <a href="{% url 'scan_barcode' %}" class="button-link">Scan Barcode</a>
+        <a href="{% url 'cart' %}" class="button-link">View Cart</a>
+    </div>
+
+    <ul>
+    {% for p in products %}
+        <li>
+            <strong>{{ p.name }}</strong> - ₱{{ p.price }} - Stock: {{ p.stock }}
+            {% if p.stock > 0 %}
+                <a href="{% url 'add_to_cart' p.id %}" class="button-link">Add</a>
+            {% else %}
+                <span class="out-of-stock">Out of Stock</span>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

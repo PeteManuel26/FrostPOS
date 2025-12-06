@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FrostPOS - Receipt</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Receipt</h2>
+    </div>
+
+    <p>Order #: {{ order.id }}</p>
+    <p>Date: {{ order.created_at }}</p>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Line Total</th>
+        </tr>
+        {% for item in order.orderitem_set.all %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.qty }}</td>
+            <td>₱{{ item.line_total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Total: ₱{{ order.total }}</h3>
+
+    <div class="actions">
+        <a href="{% url 'products' %}">Back to Products</a>
+    </div>
+</div>
+</body>
+</html>
